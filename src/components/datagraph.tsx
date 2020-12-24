@@ -1,13 +1,11 @@
-import Chart from 'chart.js';
 import React, { useEffect } from 'react';
-import { ChartProps } from "../helpers/typescripthelpers";
+import Chart from 'chart.js';
+import { ChartProps } from '../typescriptHelper/typescripthelpers';
 
 export const DataGraph: React.FunctionComponent<ChartProps> = ({ props }: ChartProps) => {
-
   const pricesArray: number[] = [];
 
   useEffect(() => {
-
     if (props.data) {
       props.data.prices.map((price: Array<number>) => {
         return pricesArray.push(price[1]);
@@ -24,9 +22,9 @@ export const DataGraph: React.FunctionComponent<ChartProps> = ({ props }: ChartP
               data: pricesArray.slice(-7),
               fill: false,
               borderColor: 'rgba(44, 130, 201, 1)',
-              borderWidth: 1
-            }
-          ]
+              borderWidth: 1,
+            },
+          ],
         },
         options: {
           maintainAspectRatio: false,
@@ -37,21 +35,21 @@ export const DataGraph: React.FunctionComponent<ChartProps> = ({ props }: ChartP
                 stacked: false,
                 scaleLabel: {
                   display: true,
-                  labelString: 'Amount'
-                }
-              }
+                  labelString: 'Amount',
+                },
+              },
             ],
             xAxes: [
               {
                 stacked: false,
                 scaleLabel: {
                   display: true,
-                  labelString: 'Last 7 days'
-                }
-              }
-            ]
-          }
-        }
+                  labelString: 'Last 7 days',
+                },
+              },
+            ],
+          },
+        },
       });
     }
   });
@@ -62,4 +60,3 @@ export const DataGraph: React.FunctionComponent<ChartProps> = ({ props }: ChartP
     </div>
   );
 };
-
