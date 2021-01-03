@@ -2,4 +2,4 @@ export const config = {
   routes: {
     home: '/',
   },
-} as const
+} as const;

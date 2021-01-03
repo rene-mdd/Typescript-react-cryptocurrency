@@ -58,9 +58,9 @@ export interface FetchData {
   };
 }
 
-export type stateInfo = {
+export interface stateInfo {
   name?: string;
-};
+}
 
 export interface GraphData {
   data?: {
