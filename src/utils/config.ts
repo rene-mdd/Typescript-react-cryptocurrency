@@ -1,5 +1,6 @@
-export const config = {
+const config = {
   routes: {
-    home: '/',
-  },
-} as const
+    home: '/'
+  }
+} as const;
+export default config;

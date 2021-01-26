@@ -1,20 +1,19 @@
-import Chart from 'chart.js';
 import React, { useEffect } from 'react';
-import { ChartProps } from "../helpers/typescripthelpers";
+import Chart from 'chart.js';
+import { ChartProps } from '../typescriptHelper/typescripthelpers';
 
-export const DataGraph: React.FunctionComponent<ChartProps> = ({ props }: ChartProps) => {
-
+const DataGraph: React.FC<ChartProps> = ({ props }: ChartProps) => {
   const pricesArray: number[] = [];
 
   useEffect(() => {
-
     if (props.data) {
       props.data.prices.map((price: Array<number>) => {
-        return pricesArray.push(price[1]);
+        pricesArray.push(price[1]);
+        return pricesArray.length;
       });
 
       const ctx = 'myChart';
-      new Chart(ctx, {
+      (() => new Chart(ctx, {
         type: 'line',
         data: {
           labels: [1, 2, 3, 4, 5, 6, 7],
@@ -52,14 +51,15 @@ export const DataGraph: React.FunctionComponent<ChartProps> = ({ props }: ChartP
             ]
           }
         }
-      });
+      }))();
     }
   });
 
   return (
     <div className="chart-container">
-      <canvas id="myChart"></canvas>
+      <canvas id="myChart" />
     </div>
   );
 };
 
+export default DataGraph;
